@@ -34,4 +34,13 @@ app.get('/api/courses',(req,res)=>{
     return new controller().getCourses(req,res);
 });
 
+
+app.post('/api/submit',(req ,res)=>{
+   return new controller().submitRegistration(req,res);
+});
+
+app.get('/api/view',(req,res)=>{
+   return new controller().viewRegistration(req,res);
+});
+
 app.listen(port, () => debug(`Listening on port ${port}`));

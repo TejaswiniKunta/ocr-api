@@ -26,6 +26,29 @@ class Controller {
         });
     });
 
+    submitRegistration = ((req,res)=> {
+        const data = JSON.stringify({
+            studentId: req.body.studentId,
+            courseList:req.body.courseList
+        });
+        new service().postRegistration(data).then(response=>{
+            res.send(response);
+        }).catch(err=>{console.log(err);
+        res.send(err);
+        })
+    })
+
+    viewRegistration = ((req,res)=>{
+        const studentId = req.query.studentId;
+
+        new service().viewRegis(studentId).then(response=>{
+            console.log(response);
+            res.send(response);
+        }).catch(err=>{console.log(err)
+        res.send(err);
+        });
+    });
 }
+
 
 module.exports = Controller;
