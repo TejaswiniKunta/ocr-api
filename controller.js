@@ -10,15 +10,16 @@ class Controller {
             password: req.body.password
         });
         new service().login(data).then(response=>{
-            var user = {type: response}
-            res.send(user);
+
+            res.send(response);
         }).catch(err=>{console.log(err)
         res.send(err);
         });
         });
 
     getCourses = ((req,res)=>{
-        new service().getCourses().then(response=>{
+        const studentId = req.query.studentId;
+        new service().getCourses(studentId).then(response=>{
             console.log(response);
             res.send(response);
         }).catch(err=>{console.log(err)
@@ -27,6 +28,7 @@ class Controller {
     });
 
     submitRegistration = ((req,res)=> {
+        console.log("API"+ req);
         const data = JSON.stringify({
             studentId: req.body.studentId,
             courseList:req.body.courseList

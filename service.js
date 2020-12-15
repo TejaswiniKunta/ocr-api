@@ -48,13 +48,14 @@ class Service {
     }
 
 
-    getCourses() {
+    getCourses(studentId) {
+
         return new Promise((resolve, reject) =>
         {
             const options = {
                 hostname: 'localhost',
                 port: 8080,
-                path: '/api/courses',
+                path: '/api/courses?studentId='+studentId,
                 method: 'GET',
                 json: true,
                 headers: {
@@ -94,7 +95,7 @@ class Service {
     }
 
     postRegistration(data){
-        console.log(data);
+
             return new Promise((resolve, reject) =>
             {
                 const options = {
