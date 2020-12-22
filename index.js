@@ -43,4 +43,11 @@ app.get('/api/view',(req,res)=>{
    return new controller().viewRegistration(req,res);
 });
 
+app.put('/api/update',(req,res)=>{
+   return new controller().updateRegistration(req,res);
+});
+
+app.delete('/api/delete',(req,res)=>{
+    return new controller().deleteRegistration(req,res);
+});
 app.listen(port, () => debug(`Listening on port ${port}`));
